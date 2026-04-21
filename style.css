@@ -1,0 +1,545 @@
+/* ============================================================
+   STYLE.CSS — Dan Blackmore Portfolio
+   ============================================================
+   Colour palette:
+   --bg:         #0e0e12  (near-black background)
+   --bg-alt:     #141418  (slightly lighter, used for alt sections)
+   --surface:    #1c1c22  (cards and panels)
+   --border:     #2a2a34  (subtle borders)
+   --accent:     #2dd4bf  (teal — the main highlight colour)
+   --accent-dim: #1a9e8e  (darker teal for hover states)
+   --text:       #f0ebe3  (warm off-white for main text)
+   --text-muted: #8a8490  (muted text for labels and secondary content)
+   ============================================================ */
+
+/* === RESET & BASE ========================================= */
+/* A simple reset so browsers don't add unexpected spacing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* smooth-scroll makes clicking nav links animate instead of jumping */
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0e0e12;
+  color: #f0ebe3;
+  font-family: 'Karla', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === TYPOGRAPHY =========================================== */
+h1, h2, h3 {
+  font-family: 'Syne', sans-serif;
+  line-height: 1.2;
+}
+
+p {
+  color: #c5bfb8; /* slightly softer than full white for body text */
+}
+
+a {
+  color: #2dd4bf;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #7eeee3;
+}
+
+/* === LAYOUT HELPERS ====================================== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Narrower container used on the contact section */
+.container-narrow {
+  max-width: 640px;
+  text-align: center;
+}
+
+/* === NAVIGATION ========================================== */
+.navbar {
+  position: fixed; /* sticks to top as you scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background-color: rgba(14, 14, 18, 0.85);
+  /* backdrop-filter creates the frosted glass blur behind the nav */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #2a2a34;
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #2dd4bf;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: #8a8490;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #f0ebe3;
+}
+
+/* === HERO SECTION ======================================== */
+.hero {
+  min-height: 100vh; /* fills the full screen height */
+  display: flex;
+  align-items: center;
+  padding: 8rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 700px;
+  position: relative;
+  z-index: 1; /* sits above the glow element */
+}
+
+.hero-greeting {
+  font-size: 1.1rem;
+  color: #2dd4bf;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 8vw, 5.5rem); /* clamp = responsive font size */
+  font-weight: 800;
+  color: #f0ebe3;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  color: #8a8490;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #a09a95;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+/* The two CTA buttons */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-family: 'Karla', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #2dd4bf;
+  color: #0e0e12;
+}
+
+.btn-primary:hover {
+  background-color: #7eeee3;
+  color: #0e0e12;
+}
+
+.btn-secondary {
+  border: 1px solid #2a2a34;
+  color: #f0ebe3;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+
+/* Decorative glow in the background of the hero */
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.06) 0%, transparent 70%);
+  pointer-events: none; /* won't block clicks */
+}
+
+/* === SECTIONS (shared styles) ============================ */
+.section {
+  padding: 6rem 0;
+}
+
+/* Alternate sections have a slightly different background */
+.section-alt {
+  background-color: #141418;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #f0ebe3;
+  margin-bottom: 1rem;
+  /* The teal line under each section title */
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #2dd4bf;
+  display: inline-block;
+}
+
+.section-subtitle {
+  color: #8a8490;
+  font-size: 1.05rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  max-width: 580px;
+}
+
+/* === ABOUT SECTION ======================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.about-text p {
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+/* The quick facts panel on the right */
+.about-facts {
+  background-color: #1c1c22;
+  border: 1px solid #2a2a34;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.fact-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-bottom: 1px solid #2a2a34;
+}
+
+.fact-item:last-child {
+  border-bottom: none;
+}
+
+.fact-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a8490;
+  margin-bottom: 0.25rem;
+}
+
+.fact-value {
+  font-size: 1rem;
+  color: #f0ebe3;
+  font-weight: 500;
+}
+
+/* Green dot for "available" status */
+.available::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #2dd4bf;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* === SKILLS SECTION ====================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.skill-card {
+  background-color: #1c1c22;
+  border: 1px solid #2a2a34;
+  border-radius: 8px;
+  padding: 1.75rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.skill-card:hover {
+  border-color: #2dd4bf;
+  transform: translateY(-3px); /* subtle lift on hover */
+}
+
+.skill-icon {
+  color: #2dd4bf;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.skill-card h3 {
+  font-size: 1.1rem;
+  color: #f0ebe3;
+  margin-bottom: 0.6rem;
+}
+
+.skill-card p {
+  font-size: 0.95rem;
+  color: #8a8490;
+  line-height: 1.6;
+}
+
+/* Technology stack — grouped into three categories */
+.tech-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.tech-group-title {
+  font-family: 'Karla', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #2dd4bf;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+/* Technology tags */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background-color: #1c1c22;
+  border: 1px solid #2a2a34;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #a09a95;
+  font-family: 'Karla', monospace;
+}
+
+/* Smaller tags used on project cards */
+.tag-small {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+}
+
+/* === PROJECTS SECTION ==================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  background-color: #1c1c22;
+  border: 1px solid #2a2a34;
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: #2dd4bf;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.project-title {
+  font-size: 1.15rem;
+  color: #f0ebe3;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.project-link {
+  font-size: 0.8rem;
+  color: #8a8490;
+  border: 1px solid #2a2a34;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  color: #f0ebe3;
+  border-color: #f0ebe3;
+}
+
+/* The highlighted "Live Demo" link */
+.project-link-accent {
+  color: #2dd4bf;
+  border-color: #2dd4bf;
+}
+
+.project-link-accent:hover {
+  background-color: #2dd4bf;
+  color: #0e0e12;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: #8a8490;
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Dashed placeholder card */
+.project-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+  min-height: 180px;
+}
+
+.project-placeholder p {
+  color: #3a3a45;
+  font-size: 0.9rem;
+}
+
+/* === CONTACT SECTION ===================================== */
+.contact-email {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: #2dd4bf;
+  border-bottom: 1px solid #2dd4bf;
+  padding-bottom: 0.25rem;
+  margin: 2rem 0;
+  transition: color 0.2s ease;
+}
+
+.contact-email:hover {
+  color: #7eeee3;
+  border-color: #7eeee3;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  color: #8a8490;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.social-link:hover {
+  color: #f0ebe3;
+}
+
+/* === FOOTER ============================================== */
+.footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid #2a2a34;
+}
+
+.footer p {
+  font-size: 0.85rem;
+  color: #3a3a45;
+}
+
+/* === RESPONSIVE — mobile adjustments ==================== */
+/* These rules kick in on screens narrower than 768px (tablets and phones) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .hero {
+    padding: 7rem 1.5rem 4rem;
+  }
+
+  /* Stack about grid vertically on mobile */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+}
