@@ -13,7 +13,6 @@
    ============================================================ */
 
 /* === RESET & BASE ========================================= */
-/* A simple reset so browsers don't add unexpected spacing */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -21,7 +20,6 @@
 }
 
 html {
-  /* smooth-scroll makes clicking nav links animate instead of jumping */
   scroll-behavior: smooth;
 }
 
@@ -41,7 +39,7 @@ h1, h2, h3 {
 }
 
 p {
-  color: #c5bfb8; /* slightly softer than full white for body text */
+  color: #c5bfb8;
 }
 
 a {
@@ -61,7 +59,6 @@ a:hover {
   padding: 0 2rem;
 }
 
-/* Narrower container used on the contact section */
 .container-narrow {
   max-width: 640px;
   text-align: center;
@@ -69,7 +66,7 @@ a:hover {
 
 /* === NAVIGATION ========================================== */
 .navbar {
-  position: fixed; /* sticks to top as you scroll */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -79,7 +76,6 @@ a:hover {
   align-items: center;
   padding: 1.25rem 2.5rem;
   background-color: rgba(14, 14, 18, 0.85);
-  /* backdrop-filter creates the frosted glass blur behind the nav */
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #2a2a34;
 }
@@ -112,7 +108,7 @@ a:hover {
 
 /* === HERO SECTION ======================================== */
 .hero {
-  min-height: 100vh; /* fills the full screen height */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 8rem 2.5rem 4rem;
@@ -123,7 +119,7 @@ a:hover {
 .hero-content {
   max-width: 700px;
   position: relative;
-  z-index: 1; /* sits above the glow element */
+  z-index: 1;
 }
 
 .hero-greeting {
@@ -135,7 +131,7 @@ a:hover {
 }
 
 .hero-name {
-  font-size: clamp(3rem, 8vw, 5.5rem); /* clamp = responsive font size */
+  font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 800;
   color: #f0ebe3;
   letter-spacing: -0.02em;
@@ -157,7 +153,6 @@ a:hover {
   line-height: 1.8;
 }
 
-/* The two CTA buttons */
 .hero-buttons {
   display: flex;
   gap: 1rem;
@@ -197,7 +192,6 @@ a:hover {
   color: #2dd4bf;
 }
 
-/* Decorative glow in the background of the hero */
 .hero-glow {
   position: absolute;
   top: 20%;
@@ -205,7 +199,7 @@ a:hover {
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, rgba(45, 212, 191, 0.06) 0%, transparent 70%);
-  pointer-events: none; /* won't block clicks */
+  pointer-events: none;
 }
 
 /* === SECTIONS (shared styles) ============================ */
@@ -213,7 +207,6 @@ a:hover {
   padding: 6rem 0;
 }
 
-/* Alternate sections have a slightly different background */
 .section-alt {
   background-color: #141418;
 }
@@ -223,7 +216,6 @@ a:hover {
   font-weight: 700;
   color: #f0ebe3;
   margin-bottom: 1rem;
-  /* The teal line under each section title */
   padding-bottom: 0.75rem;
   border-bottom: 2px solid #2dd4bf;
   display: inline-block;
@@ -251,7 +243,6 @@ a:hover {
   font-size: 1.05rem;
 }
 
-/* The quick facts panel on the right */
 .about-facts {
   background-color: #1c1c22;
   border: 1px solid #2a2a34;
@@ -284,7 +275,6 @@ a:hover {
   font-weight: 500;
 }
 
-/* Green dot for "available" status */
 .available::before {
   content: '';
   display: inline-block;
@@ -314,7 +304,7 @@ a:hover {
 
 .skill-card:hover {
   border-color: #2dd4bf;
-  transform: translateY(-3px); /* subtle lift on hover */
+  transform: translateY(-3px);
 }
 
 .skill-icon {
@@ -335,7 +325,6 @@ a:hover {
   line-height: 1.6;
 }
 
-/* Technology stack — grouped into three categories */
 .tech-stack {
   display: flex;
   flex-direction: column;
@@ -352,7 +341,6 @@ a:hover {
   font-weight: 500;
 }
 
-/* Technology tags */
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
@@ -370,7 +358,6 @@ a:hover {
   font-family: 'Karla', monospace;
 }
 
-/* Smaller tags used on project cards */
 .tag-small {
   padding: 0.25rem 0.65rem;
   font-size: 0.78rem;
@@ -428,7 +415,6 @@ a:hover {
   border-color: #f0ebe3;
 }
 
-/* The highlighted "Live Demo" link */
 .project-link-accent {
   color: #2dd4bf;
   border-color: #2dd4bf;
@@ -452,7 +438,6 @@ a:hover {
   gap: 0.5rem;
 }
 
-/* Dashed placeholder card */
 .project-placeholder {
   display: flex;
   align-items: center;
@@ -515,7 +500,6 @@ a:hover {
 }
 
 /* === RESPONSIVE — mobile adjustments ==================== */
-/* These rules kick in on screens narrower than 768px (tablets and phones) */
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem 1.5rem;
@@ -529,7 +513,6 @@ a:hover {
     padding: 7rem 1.5rem 4rem;
   }
 
-  /* Stack about grid vertically on mobile */
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
